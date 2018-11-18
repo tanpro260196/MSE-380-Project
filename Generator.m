@@ -1,6 +1,8 @@
+function [current_array] = Generator(acceleration, maxcurrent)
 dt = 0.01;
-t = 0:dt:3.5;
-n=3.5/dt;
+final_t = 3.5;
+t = 0:dt:final_t;
+n=final_t/dt;
 J = 0.01;
 b = 0.1;
 K = 0.01;
@@ -16,18 +18,17 @@ B = [0
 C = [1   0];
 C_prime = [0 1];
 D = 0;
-motor_ss = ss(A,B,C,D);
-generator_ss = ss(A,B,C_prime,D);
+alpha_ss = ss(A,B,C,D);
+current_ss = ss(A,B,C_prime,D);
 u(1:1,1:n+1) = 0;
-IC = [1.74615 4.9905];
+IC = [acceleration*final_t maxcurrent];
 
-alpha = lsim(motor_ss,u,t,IC);
-current = lsim(generator_ss,u,t,IC);
-maxalpha = max(alpha(:));
-maxcurrent = max(current(:));
+alpha = lsim(alpha_ss,u,t,IC);
+current_array = lsim(current_ss,u,t,IC);
 figure;
-plot(t,alpha,t, current);
+plot(t,alpha,t, current_array);
 title('Motor/Generator Output');
 xlabel('Time (s)');
 ylabel('Angular Acceleration/Current');
 legend('Angular Acceleration','Current');
+end
