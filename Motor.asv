@@ -1,16 +1,15 @@
 function [maxvalues] = Motor(voltage_from_solar, t_final)
-%MOTOR_FUNCTION Summary of this function goes here
-%   Detailed explanation goes here
 
 
+%All the constant
 m_fly = 1;
 J = m_fly*4e-2;
 b = 0.01;
 K = 0.01;
 R = 1;
 L = 0.5;
-s = tf('s');
 
+%System Matrices
 A = [-b/J   K/J
     -K/L   -R/L];
 B = [0
@@ -18,11 +17,13 @@ B = [0
 C = [1   0];
 C_prime = [0 1];
 D = 0;
+
+%Setup State Space
 alpha_ss = ss(A,B,C,D);
 current_ss = ss(A,B,C_prime,D);
 
 
-
+%Since the input is an array with 11 value 
 dt = 0.005;
 array_size = size(voltage_from_solar);
 alpha = [0];
@@ -40,12 +41,16 @@ result_size = size(alpha);
 t_final = (result_size-1) * dt;
 t = 0:dt:t_final;
 figure;
-subplot(,,1);
+title('Motor Output');
+subplot(1,2,1);
 plot(t,alpha);
-subplot(,,2);
+title('Motor Output');
+xlabel('Time (s)');
+ylabel('Angular Velocity');
+
+subplot(1,2,2);
 plot(t, current);
 title('Motor Output');
 xlabel('Time (s)');
-ylabel('Angular Velocity/Current');
-legend('Angular Velocity','Current');
+ylabel('Current');
 end

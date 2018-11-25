@@ -29,10 +29,8 @@ u(1:1,1:n+1) = 0;
 %Set Initial Condition
 IC = [velocity maxcurrent];
 
-%Solve the state space system
 alpha = lsim(alpha_ss,u,t,IC);
 current_array = lsim(current_ss,u,t,IC);
-%Plot
 figure;
 plot(t,alpha,t, current_array);
 title('Generator Output');
@@ -40,7 +38,7 @@ xlabel('Time (s)');
 ylabel('Angular Velocity/Current');
 legend('Angular Velocity','Current');
 
-%Constant for thermal system
+
 R = 1000;
 c_copper = 385;
 m = 0.5;
@@ -48,24 +46,16 @@ c_water = 4.18;
 density_water = 997;
 water_volume = 1;
 c_t = water_volume*density_water*c_water;
-
-%Calculate heat flow array. It will be the input.
 q = (current_array.^2 * R)'.*t;
-%Setup system matrices
 AA=[0];
 BB = [1];
 CC = [1/c_t];
 DD = 0;
 thermal_ss = ss(AA,BB,CC,DD);
-%Assume Initial temp is 0
 IC2 = [0];
 global thermal;
 thermal = lsim(thermal_ss,q,t,IC2);
-
-%Because initial temp is. Max_t is also delta T.
-max_t = max(thermal);
-
-% Plot. In our current state. The temp increase by about 0.6 degree.
+max_t = max(thermal)
 figure;
 plot(t,thermal);
 title('Heater Delta T');
