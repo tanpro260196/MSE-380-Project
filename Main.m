@@ -1,6 +1,7 @@
 workspace;
 global thermal;
 clear;
+close;
 clc;
 %Assuming solar output a constant voltage.
 T_amb_discrete = [10 13 16 19 23 24 22 20 17 14 10];
