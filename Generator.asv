@@ -1,4 +1,4 @@
-function [current_array] = Generator(acceleration, current)
+function [current_array] = Generator(acceleration, maxcurrent)
 dt = 0.01;
 final_t = 3.5;
 t = 0:dt:final_t;
@@ -21,14 +21,38 @@ D = 0;
 alpha_ss = ss(A,B,C,D);
 current_ss = ss(A,B,C_prime,D);
 u(1:1,1:n+1) = 0;
-IC = [acceleration*final_t current];
+IC = [acceleration*final_t maxcurrent];
 
 alpha = lsim(alpha_ss,u,t,IC);
 current_array = lsim(current_ss,u,t,IC);
 figure;
-plot(t,alpha,t, current);
-title('Motor/Generator Output');
+plot(t,alpha,t, current_array);
+title('Generator Output');
 xlabel('Time (s)');
-ylabel('Angular Acceleration/Current');
-legend('Angular Acceleration','Current');
+ylabel('Angular Velocity/Current');
+legend('Angular Velocity','Current');
+
+
+R = 10000;
+c_copper = 385;
+m = 0.5;
+c_water = 4.18;
+density_water = 997;
+water_volume = 1;
+c_t = water_volume*density_water*c_water;
+q = (current_array.^2 * R)'.*t;
+AA=[0];
+BB = [1];
+CC = [1/c_t];
+DD = 0;
+thermal_ss = ss(AA,BB,CC,DD);
+IC2 = [0];
+global thermal;
+thermal = lsim(thermal_ss,q,t,IC2);
+max_t = max(thermal)
+figure;
+plot(t,thermal);
+title('Heater Delta T');
+xlabel('Time (s)');
+ylabel('Delta T');
 end
