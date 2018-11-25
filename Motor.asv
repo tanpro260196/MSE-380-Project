@@ -40,16 +40,12 @@ result_size = size(alpha);
 t_final = (result_size-1) * dt;
 t = 0:dt:t_final;
 figure;
-title('Motor Output');
-subplot(1,2,1);
+subplot(,,1);
 plot(t,alpha);
-title('Motor Output');
-xlabel('Time (s)');
-ylabel('Angular Velocity');
-
-subplot(1,2,2);
+subplot(,,2);
 plot(t, current);
 title('Motor Output');
 xlabel('Time (s)');
-ylabel('Current');
+ylabel('Angular Velocity/Current');
+legend('Angular Velocity','Current');
 end

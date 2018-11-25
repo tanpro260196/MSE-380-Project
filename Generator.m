@@ -1,12 +1,12 @@
 function [current_array] = Generator(velocity, maxcurrent)
 dt = 0.01;
-final_t = 5;
+final_t = 10;
 t = 0:dt:final_t;
 n=final_t/dt;
 J = 0.01;
-b = 0.05;
+b = 0.01;
 K = 0.01;
-R = 5;
+R = 1;
 L = 0.5;
 s = tf('s');
 P_motor = K/((J*s+b)*(L*s+R)+K^2);
