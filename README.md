@@ -1,2 +1,2 @@
-# MSE-380-Project
-Solar Panel - Flywheel Storage (Motor + Generator) - Heater
+# MSE 380 Project
+Solar Panel - Flywheel Storage (Motor + Generator) - Heater simulated in MatLab.

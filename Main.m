@@ -1,8 +1,8 @@
-workspace;
 clear;
 close;
 clc;
-
+global y;
+global thermal_output;
 %voltage_from_solar = [11 10 9 8 7 6 5 4 3 2 1];
 
 Motor_output = Motor();
