@@ -59,13 +59,12 @@ DD = 0;
 thermal_ss = ss(AA,BB,CC,DD);
 %Assume Initial temp is 25
 IC2 = [25];
-global thermal;
 thermal = lsim(thermal_ss,q,t,IC2);
 
 
 max_t = max(thermal);
 
-% Plot. In our current state. The temp increase by about 0.6 degree.
+% Plot. In our current state. The temp increase by about 8 degree.
 figure;
 plot(t,thermal);
 title('Heater T');

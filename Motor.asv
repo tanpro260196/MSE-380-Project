@@ -1,13 +1,14 @@
 function [endvalue] = Motor()
+global V;
 t = [0 3600*11-1];
 IC = [0 0];
-[t,y] = ode45(@solar_voltage_interp1,t,IC);
+[t,y] = ode45(@voltage,t,IC);
 %Plot
 
 figure;
 subplot(1,2,1);
 plot(t,y(:,1));
-title('Motor Velocity Output');
+title('Motor V Output');
 xlabel('Time (s)');
 ylabel('Angular Velocity');
 

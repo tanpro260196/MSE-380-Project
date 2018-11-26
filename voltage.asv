@@ -1,0 +1,24 @@
+function dx = sys(t,x)
+%CONDUCTION Summary of this function goes here
+%   Detailed explanation goes here
+V = [6.4635    6.4417    6.4200    6.3982    6.3691    6.3619    6.3764    6.3909    6.4127    6.4345    6.4635];
+%All the constant
+m_fly = 1;
+J = 0.01;
+b = 0.01;
+K = 0.01;
+R = 4;
+L = 0.5;
+input_size = size(V);
+hours = 0:1:input_size(2);
+u = interpl(ho)
+%System Matrices
+A = [-b/J   K/J
+    -K/L   -R/L];
+B = [0
+    1/L];
+C = [1   1];
+D = 0;
+dx = A*x + B*
+end
+
