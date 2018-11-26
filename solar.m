@@ -25,7 +25,7 @@ Ipv = Np*((Ipvn + Ki*dT)*g);
 Vpv = Ipv*Rs;
 %% Output
 I = Ipv-Io.*(exp(Vpv/(a*Vt))-1); %solar panel output current
-R_fly = 1; %flywheel resistance
+R_fly = 1.1; %flywheel resistance
 V = I*R_fly; %solar panel output voltage
 plot(hours,V);
 title("Solar panel output voltage from 8am-6pm");
