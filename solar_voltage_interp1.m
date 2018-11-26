@@ -7,8 +7,7 @@ b = 0.01;
 K = 0.01;
 R = 4;
 L = 0.5;
-input_size = size(V);
-hours = 0:1:input_size(2)-1;
+hours = 0:1:length(V)-1;
 
 %Interpret V into curve?
 u = interp1 (hours,V,t/3600,'spline');
