@@ -1,2 +1,2 @@
 # MSE-380-Project
-We are totally not procastinating...........
+Solar Panel - Flywheel Storage (Motor + Generator) - Heater
