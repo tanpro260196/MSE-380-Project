@@ -3,10 +3,10 @@ function [endvalue] = Motor(voltage_from_solar, t_final)
 
 %All the constant
 m_fly = 1;
-J = m_fly*4e-2;
+J = 0.01;
 b = 0.01;
 K = 0.01;
-R = 1;
+R = 4;
 L = 0.5;
 
 %System Matrices
