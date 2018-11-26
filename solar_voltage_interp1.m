@@ -23,4 +23,3 @@ D = 0;
 %Output system
 dx = A*x + B*u;
 end
-
