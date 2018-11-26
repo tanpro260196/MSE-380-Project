@@ -1,7 +1,7 @@
 function [endvalue] = Motor()
-t = [0 3600*11-1];
-IC = [0 0];
-%Check solar_voltage_interp1.m for the system matrixs.
+t = [0 3600*11-1]; %time span
+IC = [0 0]; %initial condition
+%Check solar_voltage_interp1.m for the system matrices.
 [t,y] = ode45(@solar_voltage_interp1,t,IC);
 
 %Plot

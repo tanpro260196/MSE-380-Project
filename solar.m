@@ -3,12 +3,13 @@ function V = solar(T_amb_discrete)
 %% Assume solar panels run 8am-6pm
 % T_amb_discrete = [10 13 16 19 23 24 22 20 17 14 10]; %discrete ambient temp 8am-6pm (*)
 T_nominal(1:length(T_amb_discrete)) = 25;
+hours = 8:18;
 %% Parameters of PV module
 Ns = 6; %number of cells in series (*)
 Np = 5; %number of parallel cells (*)
 Isc = 0.45*Np; %Short-circuit current 
 Voc = 6*Ns; %Open-circuit voltage
-dT = abs(T_amb_discrete-T_nominal); %nominal and acutal temp difference
+dT = T_amb_discrete-T_nominal); %nominal and acutal temp difference
 Ki = 0.0032; %current coefficient 
 Kv = -0.1230; %voltage coefficient
 a = 1; %diode ideality constant
@@ -22,8 +23,12 @@ Ipvn = 2.8; %light-generated current at nominal condition (Go = 1000 W/m^2)
 g = 0.4539; %g = G/Gn (ratio of actual irradiation and nominal irradiation)(*)
 Ipv = Np*((Ipvn + Ki*dT)*g);
 Vpv = Ipv*Rs;
-%% calculate output I
-I = Ipv-Io.*(exp(Vpv/(a*Vt))-1); 
+%% Output
+I = Ipv-Io.*(exp(Vpv/(a*Vt))-1); %solar panel output current
 R_fly = 1; %flywheel resistance
 V = I*R_fly; %solar panel output voltage
+plot(hours,V);
+title("Solar panel output voltage from 8am-6pm");
+xlabel("Time (am/pm)");
+ylabel("Output Voltage (V)");
 end
