@@ -1,9 +1,10 @@
 function [endvalue] = Motor()
 t = [0 3600*11-1];
 IC = [0 0];
+%Check solar_voltage_interp1.m for the system matrixs.
 [t,y] = ode45(@solar_voltage_interp1,t,IC);
-%Plot
 
+%Plot
 figure;
 subplot(1,2,1);
 plot(t,y(:,1));

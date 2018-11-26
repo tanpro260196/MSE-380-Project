@@ -9,7 +9,10 @@ R = 4;
 L = 0.5;
 input_size = size(V);
 hours = 0:1:input_size(2)-1;
+
+%Interpret V into curve?
 u = interp1 (hours,V,t/3600,'spline');
+
 %System Matrices
 A = [-b/J   K/J
     -K/L   -R/L];
@@ -17,6 +20,8 @@ B = [0
     1/L];
 C = [1   1];
 D = 0;
+
+%Output system
 dx = A*x + B*u;
 end
 

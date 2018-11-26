@@ -2,7 +2,6 @@ workspace;
 clear;
 close;
 clc;
-%Assuming solar output a constant voltage.
 
 %voltage_from_solar = [11 10 9 8 7 6 5 4 3 2 1];
 
