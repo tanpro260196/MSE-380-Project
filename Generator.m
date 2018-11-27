@@ -1,8 +1,9 @@
 function [current_array] = Generator(velocity, maxcurrent)
+
 global current_array_thermal;
 %All the constant.
-dt = 0.005;
-final_t = 3000;
+dt = 0.1;
+final_t = 600;
 t = 0:dt:final_t;
 size(t)
 n=final_t/dt;
@@ -45,19 +46,17 @@ ylabel('Angular Velocity/Current');
 legend('Angular Velocity','Current');
 global y;
 global thermal_output; 
-t = [0 3000];
+t = [0 final_t];
 IC2 = [0];
 %Check solar_voltage_interp1.m for the system matrixs.
 [t,y] = ode45(@heater,t,IC2);
 % Plot. In our current state. The temp increase by about 8 degree.
-temp_size = size(y)
+temp_size = size(y);
 
 thermal_output = [25];
 for i = 0:temp_size(1)-2
-    i
-    thermal_output = [thermal_output; 25+y(i+1)]
+    thermal_output = [thermal_output; 25+y(i+1)];
 end
-size(thermal_output)
 figure;
 plot(t,thermal_output);
 title('Heater T');

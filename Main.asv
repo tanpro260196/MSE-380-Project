@@ -1,0 +1,23 @@
+clear;
+close;
+clc;
+global y;
+global thermal_output;
+%%Constant for motor
+global J_motor
+global b_motor
+global K_motor
+global R_motor
+global L_motor
+
+J_motor = 0.01;
+b_motor = 0.01;
+K_motor = 0.01;
+R_motor = 4;
+L_motor = 0.5;
+
+%%Constant for genrator
+
+
+Motor_output = Motor();
+Flywheel_current = Generator(Motor_output(1),Motor_output(2));

@@ -10,7 +10,7 @@ L = 0.5;
 hours = 0:1:length(V)-1;
 
 %Interpret V into curve?
-u = interp1 (hours,V,t/3600,'spline');
+u = interp1 (hours,V,t,'spline');
 
 %System Matrices
 A = [-b/J   K/J
