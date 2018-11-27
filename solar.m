@@ -5,8 +5,8 @@ function V = solar(T_amb_discrete)
 T_nominal(1:length(T_amb_discrete)) = 25;
 hours = 8:18;
 %% Parameters of PV module
-Ns = 6; %number of cells in series (*)
-Np = 5; %number of parallel cells (*)
+Ns = 6; %number of panels in series (*)
+Np = 5; %number of parallel panels (*)
 Isc = 0.45*Np; %Short-circuit current 
 Voc = 6*Ns; %Open-circuit voltage
 dT = T_amb_discrete-T_nominal; %nominal and acutal temp difference
