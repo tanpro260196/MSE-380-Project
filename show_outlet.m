@@ -1,21 +1,21 @@
-function h = show_outlet(volume)
+function h = show_outlet()
 rho = 994;
-tube_diameter = 0.02
-tube_cross_section = pi*tube_diameter^2
+tube_diameter = 0.02;
+tube_cross_section = 3.14*(tube_diameter/2)^2;
 tube_length = 1;
-I_f = rho*tube_length/tube_cross_section
+I = rho*tube_length/tube_cross_section;
 tank_area = 0.075;
-C_grav = tank_area/rho*9.81;
-R_f = 0.9;
+Cg = tank_area/rho*9.81;
+R = 1;
 
 
 
 
-A=[0 1/C_grav
-    1/I_f -R_f/I_f];
+A=[0 -1/Cg
+    1/I -R/I];
 B = [0 0
     0 0];
-C = [1/rho*9.81 0];
+C = [1/(rho*9.81) 0];
 D = [0 0];
 
 
