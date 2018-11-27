@@ -1,0 +1,19 @@
+
+clear;
+clc;
+rho = 994;
+Cg = 0.075/(rho*9.81);
+
+
+
+A = -1/Cg;
+B = 0;
+C = 1/rho*g;
+D = 0;
+
+test = ss(A,B,C,D)
+IC = 7800;
+t = 0:0.1:10;
+n = 10/0.1;
+u = 0;
+y = lsim(test,u,t,IC);
