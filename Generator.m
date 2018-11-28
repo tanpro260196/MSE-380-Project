@@ -41,12 +41,11 @@ figure(3);
 subplot(2,1,1);
 plot(t,alpha);
 xlim([0 600]);
-title('Generator Output Angular Velocity');
+title('Generator Output Angular Velocity/Current vs Time');
 xlabel('Time (s)');
 ylabel('Angular Velocity (rad/s)');
 
 subplot(2,1,2);
-title('Generator Output Current');
 plot(t, current_array);
 xlabel('Time (s)');
 ylabel('Current (A))');
