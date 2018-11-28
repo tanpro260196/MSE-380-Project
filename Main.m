@@ -1,5 +1,5 @@
 clear;
-close;
+close all;
 clc;
 global water_volume;
 

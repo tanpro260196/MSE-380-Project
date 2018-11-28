@@ -24,4 +24,3 @@ BB = [1/c_t];
 
 dx = AA*x + BB*u;
 end
-

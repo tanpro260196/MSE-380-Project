@@ -37,13 +37,19 @@ alpha = lsim(alpha_ss,u,t,IC);
 current_array = lsim(current_ss,u,t,IC);
 current_array_thermal = current_array;
 %Plot
-figure;
-plot(t,alpha,t, current_array);
+figure(3);
+subplot(2,1,1);
+plot(t,alpha);
 xlim([0 600]);
-title('Generator Output');
+title('Generator Output Angular Velocity');
 xlabel('Time (s)');
-ylabel('Angular Velocity/Current');
-legend('Angular Velocity','Current');
+ylabel('Angular Velocity (rad/s)');
+
+subplot(2,1,2);
+title('Generator Output Current');
+plot(t, current_array);
+xlabel('Time (s)');
+ylabel('Current (A))');
 global y;
 global thermal_output; 
 t = [0 final_t];
@@ -57,9 +63,9 @@ thermal_output = [25];
 for i = 0:temp_size(1)-2
     thermal_output = [thermal_output; 25+y(i+1)];
 end
-figure;
+figure(4);
 plot(t,thermal_output);
-title('Heater T');
+title('Temperature Change in Heater');
 xlabel('Time (s)');
-ylabel('T');
+ylabel('Temperature (C)');
 end

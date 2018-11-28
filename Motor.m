@@ -5,17 +5,17 @@ IC = [0 0]; %initial condition
 [t,y] = ode45(@solar_voltage_interp1,t,IC);
 
 %Plot
-figure;
+figure(2);
 subplot(1,2,1);
 plot(t,y(:,1));
 title('Motor Velocity Output');
-xlabel('Time (s)');
-ylabel('Angular Velocity');
+xlabel('Time (h)');
+ylabel('Angular Velocity (rad/s)');
 
 subplot(1,2,2);
 plot(t,y(:,2));
 title('Motor Current Output');
 xlabel('Time (h)');
-ylabel('Current');
+ylabel('Current (A)');
 endvalue = [y(end,1) y(end,2)];
 end

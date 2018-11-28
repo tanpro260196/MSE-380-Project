@@ -24,7 +24,7 @@ g = 0.4539; %g = G/Gn (ratio of actual irradiation and nominal irradiation)(*)
 Ipv = Np*((Ipvn + Ki*dT)*g);
 Vpv = Ipv*Rs;
 %% calculate output I
-I = Ipv-Io.*(exp(Vpv/(a*Vt))-1); 
+I = Ipv-Io.*(exp(Vpv/(a*Vt))-1);
 R_fly = 1; %flywheel resistance
 V = I*R_fly; %solar panel output voltage
 figure(1);
