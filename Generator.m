@@ -7,14 +7,14 @@ final_t = 600;
 t = 0:dt:final_t;
 size(t)
 n=final_t/dt;
-J = 0.01;
-b = 0.001;
+J = 1;
+b = 0.01;
 K = 0.01;
-R = 0.1;
-L = 0.5;
+R = 0.5;
+L = 1;
 
 %System Matrices
-A = [-b/J   0
+A = [-b/J   K/J
      K/L   -R/L];
 B = [0
      0];
@@ -30,7 +30,7 @@ current_ss = ss(A,B,C_prime,D);
 %input.
 u(1:1,1:n+1) = 0;
 %Set Initial Condition
-IC = [velocity maxcurrent];
+IC = [velocity 0];
 
 %Solve the state space system
 alpha = lsim(alpha_ss,u,t,IC);
@@ -39,7 +39,7 @@ current_array_thermal = current_array;
 %Plot
 figure;
 plot(t,alpha,t, current_array);
-xlim([0 35]);
+xlim([0 600]);
 title('Generator Output');
 xlabel('Time (s)');
 ylabel('Angular Velocity/Current');

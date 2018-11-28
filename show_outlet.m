@@ -8,7 +8,7 @@ tube_length = 1;
 I = (rho*tube_length)/tube_cross_section;
 tank_area = 0.075;
 Cg = tank_area/(rho*9.81);
-R = 1;
+R = 20000000;
 
 
 
@@ -25,7 +25,7 @@ D = [0 0];
 
 shower = ss(A,B,C,D);
 dt = 0.1;
-final_t = 600;
+final_t = 10000;
 t = 0:dt:final_t;
 n=final_t/dt;
 u(1:2,1:n+1) = 0;
@@ -36,5 +36,7 @@ P10 = lsim(shower,u,t,IC);
 figure;
 plot(t,P10);
 title('Shower Outlet');
+ylim([0 1]);
+xlim([0 600]);
 end
 

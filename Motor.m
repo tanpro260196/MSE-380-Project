@@ -15,7 +15,7 @@ ylabel('Angular Velocity');
 subplot(1,2,2);
 plot(t,y(:,2));
 title('Motor Current Output');
-xlabel('Time (s)');
+xlabel('Time (h)');
 ylabel('Current');
 endvalue = [y(end,1) y(end,2)];
 end

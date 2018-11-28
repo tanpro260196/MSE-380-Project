@@ -5,14 +5,14 @@ global water_volume;
 dt = 0.1;
 final_t = 600;
 t1 = 0:dt:final_t;
-R = 150;
+R = 10;
 c_water = 4.18;
 density_water = 997;
 water_volume = 0.0651;
 c_t = water_volume*density_water*c_water;
-k = 0.011;
+k = 0.01;
 area = 0.36;
-thickness = 0.002;
+thickness = 0.0025;
 R_k = thickness/(k*area);
 
 %Calculate heat flow array. It will be the input.
